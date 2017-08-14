@@ -28,7 +28,7 @@ document.onkeyup = function(event) {
 	for(i = 0; i < 10; i++) {
 		if(userChoice === computerChoice) {
 		alert('right');
-		document.getElementById('wins').wins++;
+		wins++;
 		break;
 		}
 		if(userChoice !== computerChoice) {
@@ -36,7 +36,15 @@ document.onkeyup = function(event) {
 			counter--;
 			break;
 		}
-        // Need a place to save the previously chosen letter
+        var html =
+        "<h1>The Psychic Game</h1>"
+		"<p>Guess what letter I'm thinking of</p>"
+		"<pWins: " + wins + "</p>"
+		"<p>Losses: " + 0 + "</p>"
+		"<p>Your Guesses so far: " + userChoice + "</p>";
+
+        // Set the inner HTML contents of the #game div to our html string
+    document.querySelector("#game").innerHTML = html;// Need a place to save the previously chosen letter
 	}	
         
 	
