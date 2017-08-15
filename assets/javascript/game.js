@@ -12,25 +12,27 @@ var counter = 9;
 
 //Wait for the user's choice
 document.onkeyup = function(event) {
-	// console.log(event); //Might not need this if I put this in a larger onkey
-		//onkeyup fuinction
+	// Make a user choice variable
 	var userChoice = event.key;
-	  // return userChoice; //Might not need this if I put this in a larger onkey
-		//onkeyup fuinction Make a random generator for computer
-
+	   
+	//Make a random generator for computer
 	var computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
 	// var computerChoice = function() {
 	//   var randomAlphabet = alphabet[Math.floor(Math.random() * alphabet.length)];
 	//   // return randomAlphabet;
 	// };
 
-	// Line 3 instructions
+	// For 9 times, you should be allowed to guess the correct letter
 	for(i = 0; i < 10; i++) {
+		//If userChoice is not the same as computerChoice a) count down counter var 
+		  // & b) store them in a var that displays all choices so far
 		if(userChoice !== computerChoice) {
 			alert('wrong');
 			counter--;
 			break;
 		}
+		//If userChoice is the same a commputerChoice
+
 		if(userChoice === computerChoice) {
 		alert('right');
 		wins++;
