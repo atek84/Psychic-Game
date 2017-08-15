@@ -26,21 +26,23 @@ document.onkeyup = function(event) {
 
 	// Line 3 instructions
 	for(i = 0; i < 10; i++) {
-		if(userChoice === computerChoice) {
-		alert('right');
-		wins++;
-		break;
-		}
 		if(userChoice !== computerChoice) {
 			alert('wrong');
 			counter--;
 			break;
 		}
+		if(userChoice === computerChoice) {
+		alert('right');
+		wins++;
+		break;
+		}
+
         var html =
         "<h1>The Psychic Game</h1>"
 		"<p>Guess what letter I'm thinking of</p>"
 		"<pWins: " + wins + "</p>"
 		"<p>Losses: " + 0 + "</p>"
+		"<p>Guesses Left: " + counter + "</p>"
 		"<p>Your Guesses so far: " + userChoice + "</p>";
 
         // Set the inner HTML contents of the #game div to our html string
@@ -48,7 +50,7 @@ document.onkeyup = function(event) {
 	}	
         
 	
-}	
+};	
 
 //if user choice equals ComputerAlphabet, win counter goes up 1
 
