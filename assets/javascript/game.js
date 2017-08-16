@@ -1,5 +1,5 @@
 // Make a list pf letters the computer chooses
-var alphabet = ['a','b','c','d'];
+var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 
 //Make a Wins function for when the guess is correct you add 1
 
@@ -16,8 +16,10 @@ var counter = 9;
 var guesses= [];
 
 
-//rewrite stats
 
+	//Make a random generator for computer
+var computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
+	
 
 //Wait for the user's choice
 document.onkeyup = function(event) {
@@ -25,24 +27,29 @@ document.onkeyup = function(event) {
 	
 	var userChoice = event.key;
 
-	//Make a random generator for computer
-	var computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
 	console.log("Computer Choice = " + computerChoice + " and userChoice = " + userChoice);
 	
-	// For 9 times, you should be allowed to guess the correct letter
-		//If userChoice is not the same as computerChoice a) count down var counter 
-		  // & b) store them in a var that displays all choices so far
+	// for (var i = 0; i < guesses.length; i++) {
+	// 	console.log(guesses[i]);
+	// }
+	
 	if(userChoice !== computerChoice) {
 		counter--;
-		console.log('wrong');	  	
+		console.log('wrong');
+		guesses.push(userChoice);	  	
 	}	  
 	
 		//If userChoice is the same a commputerChoice increase wins by 1
 	// };	
 	else if(userChoice === computerChoice) {
 		wins++;
-		console.log('right')
+		computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
+		console.log('right');
+		// clear the guesses/ empty the array/
+		guesses = []; 
 		};
+	
+	
 	
 	var html =
 		"<h1>The Psychic Game</h1>" +
@@ -50,11 +57,24 @@ document.onkeyup = function(event) {
 		"<p>Wins: " + wins + "</p>" +
 		"<p>Losses: " + losses + "</p>" +
 		"<p>Guesses Left: " + counter + "</p>" + 
-		"<p>Your Guesses so far: " + userChoice + "</p>";
+		"<p>Your Guesses so far: " + guesses + "</p>";
 				
         // Set the inner HTML contents of the #ame div to our html string
         document.getElementById("game").innerHTML = html;
-    };	
+		
+		if(counter === 0) {
+				window.location.reload(true);
+			}
+    // Your Guesses So Far: (the specific letters that the user typed. 
+    // Display these until the user either wins or loses.)
+    // save userChoice when !== computerChoice to wins var
+//     do {
+//     userChoice += guesses;
+//     i++;
+//     console.log(guesses)
+// }
+// while (userChoice !== computerChoice); 
+};	
  
 
 
